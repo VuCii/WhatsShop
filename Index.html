@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My E-commerce Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="path/to/logo.png" alt="WhatsShop Logo" class="logo-img">
+                <h1>WhatsShop</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#products"><i class="fas fa-box-open"></i> Products</a></li>
+                    <li><a href="#cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                    <li><a href="#personal-details"><i class="fas fa-user"></i> Personal Details</a></li>
+                    <li><a href="#delivery-options"><i class="fas fa-truck"></i> Delivery Options</a></li>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="personal-details" class="container">
+        <h2>Personal Details</h2>
+        <form id="personal-details-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+            <button type="submit">Save Details</button>
+        </form>
+    </section>
+
+    <main>
+        <section id="products" class="container">
+            <h2>Our Products</h2>
+            <div class="product-list">
+                <div class="product">
+                    <img src="/images/netball.jpg" alt="iPhone X">
+                    <h3>iPhone X</h3>
+                    <p>Price: R6999,99</p>
+                    <button class="add-to-cart" data-name="iPhone X" data-price="6999.99">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="./images/istockphoto-187164792-612x612.jpg" alt="iPhone 12">
+                    <h3>iPhone 12</h3>
+                    <p>Price: R9999,99</p>
+                    <button class="add-to-cart" data-name="iPhone 12" data-price="9999.99">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="./images/istockphoto-1768725228-612x612.jpg" alt="iPhone 13">
+                    <h3>iPhone 13</h3>
+                    <p>Price: R15999,99</p>
+                    <button class="add-to-cart" data-name="iPhone 13" data-price="15999.99">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="./images/istockphoto-1196245842-612x612.jpg" alt="iPhone 14">
+                    <h3>iPhone 14</h3>
+                    <p>Price: R18999,99</p>
+                    <button class="add-to-cart" data-name="iPhone 14" data-price="18999.99">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+        <!-- Product Modal -->
+        <div id="product-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modal-product-name"></h2>
+                <img id="modal-product-image" src="" alt="Product Image" style="max-width: 100%; height: auto;">
+                <p id="modal-product-price"></p>
+                <p id="modal-product-description"></p>
+                <button id="modal-add-to-cart" class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+
+        <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        </style>
+
+        <script>
+        document.querySelectorAll('.product').forEach(product => {
+            product.addEventListener('click', () => {
+                const name = product.querySelector('h3').textContent;
+                const price = product.querySelector('p').textContent;
+                const imageSrc = product.querySelector('img').src;
+                const description = "This is a detailed description of " + name;
+
+                document.getElementById('modal-product-name').textContent = name;
+                document.getElementById('modal-product-price').textContent = price;
+                document.getElementById('modal-product-image').src = imageSrc;
+                document.getElementById('modal-product-description').textContent = description;
+
+                const modal = document.getElementById('product-modal');
+                modal.style.display = "block";
+
+                document.getElementById('modal-add-to-cart').onclick = () => {
+                    const priceValue = parseFloat(product.querySelector('button').dataset.price);
+                    cart.push({ name, price: priceValue });
+                    updateCart();
+                    modal.style.display = "none";
+                    alert(`${name} added to your cart!`);
+                };
+            });
+        });
+
+        document.querySelector('.close').onclick = () => {
+            document.getElementById('product-modal').style.display = "none";
+        };
+
+        window.onclick = (event) => {
+            const modal = document.getElementById('product-modal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+        </script>
+
+        <!-- Personal Details Form -->
+       
+
+        <!-- Delivery Options -->
+        <section id="delivery-options" class="container">
+            <h2>Delivery Options</h2>
+            <form id="delivery-options-form">
+                <div>
+                    <input type="radio" id="standard" name="delivery" value="Standard" data-price="50" required>
+                    <label for="standard">Standard Delivery - R50 (3-5 business days)</label>
+                </div>
+                <div>
+                    <input type="radio" id="express" name="delivery" value="Express" data-price="100">
+                    <label for="express">Express Delivery - R100 (1-2 business days)</label>
+                </div>
+                <div>
+                    <input type="radio" id="overnight" name="delivery" value="Overnight" data-price="150">
+                    <label for="overnight">Overnight Delivery - R150 (Next day delivery)</label>
+                </div>
+                <button type="submit">Save Delivery Option</button>
+            </form>
+        </section>
+
+        <section id="cart" class="container">
+            <h2>Your Cart <i class="fas fa-shopping-cart"></i></h2>
+            <div class="cart-items"></div>
+            <p class="delivery">Delivery: None</p>
+            <p class="total">Total: R0</p>
+            <button id="checkout" class="checkout-btn">
+            <i class="fas fa-whatsapp"></i> Checkout on WhatsApp
+            
+            </button>
+
+        </section>
+        </main>
+
+        <style>
+        #cart {
+            background: white;
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #cart h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .cart-items {
+            margin-bottom: 1rem;
+            max-height: 200px;
+            overflow-y: auto;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 1rem 0;
+        }
+
+        .total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .checkout-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkout-btn i {
+            margin-right: 0.5rem;
+        }
+
+        .checkout-btn:hover {
+            background: #1EBE57;
+        }
+        </style>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 My Store</p>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality
+        let cart = [];
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const deliveryDisplay = document.querySelector('.delivery');
+        const totalDisplay = document.querySelector('.total');
+        let personalDetails = {};
+        let deliveryOption = {};
+
+        // Add to Cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const product = button.closest('.product');
+                const name = button.dataset.name;
+                const price = parseFloat(button.dataset.price);
+                const image = product.querySelector('img').src;
+                const description = product.querySelector('h3').textContent;
+
+                // Add item to cart
+                cart.push({ name, price, image, description });
+                updateCart();
+                alert(`${name} added to your cart!`);
+            });
+        });
+
+        // Update Cart
+        function updateCart() {
+            cartItemsContainer.innerHTML = ''; // Clear cart display
+            let total = 0;
+
+            // Generate cart items
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
+                    <span>${item.name} - R${item.price.toFixed(2)}</span>
+                    <button class="remove-item"><i class="fas fa-trash-alt"></i> Remove</button>
+                `;
+                itemElement.querySelector('.remove-item').addEventListener('click', () => {
+                    cart.splice(index, 1); // Remove item from cart
+                    updateCart();
+                });
+                cartItemsContainer.appendChild(itemElement);
+                total += item.price;
+            });
+
+            // Update total
+            const deliveryCost = deliveryOption.price || 0;
+            deliveryDisplay.textContent = `Delivery: ${deliveryOption.description || 'None'}`;
+            totalDisplay.textContent = `Total: R${(total + deliveryCost).toFixed(2)}`;
+        }
+
+        // Save Personal Details
+        document.getElementById('personal-details-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            personalDetails = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value
+            };
+            alert('Personal details saved!');
+        });
+
+        // Save Delivery Option
+        document.getElementById('delivery-options-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const selectedOption = document.querySelector('input[name="delivery"]:checked');
+            deliveryOption = {
+                type: selectedOption.value,
+                price: parseFloat(selectedOption.dataset.price),
+                description: selectedOption.nextElementSibling.textContent
+            };
+            alert('Delivery option saved!');
+            updateCart();
+        });
+
+        // Generate PDF
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Add title
+            doc.setFontSize(18);
+            doc.text('Order Details', 105, 10, null, null, 'center');
+
+            // Add personal details
+            doc.setFontSize(12);
+            doc.text(`Name: ${personalDetails.name}`, 10, 30);
+            doc.text(`Email: ${personalDetails.email}`, 10, 40);
+            doc.text(`Phone: ${personalDetails.phone}`, 10, 50);
+            doc.text(`Address: ${personalDetails.address}`, 10, 60);
+
+            // Add a line separator
+            doc.setLineWidth(0.5);
+            doc.line(10, 70, 200, 70);
+
+            // Add cart items
+            let yPosition = 80;
+            cart.forEach(item => {
+            doc.setFontSize(14);
+            doc.text(`Product: ${item.name}`, 10, yPosition);
+            doc.setFontSize(12);
+            doc.text(`Price: R${item.price.toFixed(2)}`, 10, yPosition + 10);
+            doc.text(`Description: ${item.description}`, 10, yPosition + 20);
+            doc.addImage(item.image, 'JPEG', 150, yPosition, 40, 40);
+            yPosition += 50;
+            doc.setLineWidth(0.2);
+            doc.line(10, yPosition, 200, yPosition);
+            yPosition += 10;
+            });
+
+            // Add delivery and total
+            const total = cart.reduce((sum, item) => sum + item.price, 0) + deliveryOption.price;
+            doc.setFontSize(14);
+            doc.text(`Delivery: ${deliveryOption.description}`, 10, yPosition);
+            doc.text(`Total: R${total.toFixed(2)}`, 10, yPosition + 10);
+
+            // Add footer
+            doc.setFontSize(10);
+            doc.text('Thank you for shopping with us!', 105, 290, null, null, 'center');
+
+            return doc;
+        }
+        
+
+        // WhatsApp Checkout
+        document.getElementById('checkout').addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            if (!personalDetails.name || !personalDetails.email || !personalDetails.phone || !personalDetails.address) {
+                alert('Please fill in your personal details.');
+                return;
+            }
+
+            if (!deliveryOption.type) {
+                alert('Please select a delivery option.');
+                return;
+            }
+
+            const pdfDoc = generatePDF();
+            const pdfBlob = pdfDoc.output('blob');
+
+            const formData = new FormData();
+            formData.append('file', pdfBlob, 'order-details.pdf');
+
+            fetch('https://file.io', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const fileUrl = data.link;
+                const whatsappMessage = `Hello! I would like to order. Please find the details in the attached PDF: ${fileUrl}`;
+                const whatsappURL = `https://wa.me/0656300402?text=${encodeURIComponent(whatsappMessage)}`;
+                window.open(whatsappURL, '_blank');
+            })
+            .catch(error => {
+                console.error('Error uploading file:', error);
+                alert('Failed to upload the PDF. Please try again.');
+            });
+        });
+
+        // Generate PDF Link
+        document.getElementById('generate-pdf').addEventListener('click', () => {
+            const pdfDoc = generatePDF();
+            pdfDoc.save('order-details.pdf');
+        });
+    </script>
+    
+</body>
+</html>
+
+<style>
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background: #333;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+nav a i {
+    margin-right: 0.5rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1rem 0;
+}
+
+.product {
+    background: white;
+    border: 1px solid #ddd;
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.3s;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #218838;
+}
+
+#cart {
+    background: white;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items {
+    margin-bottom: 1rem;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+}
+
+.generate-pdf-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+}
+
+.generate-pdf-btn:hover {
+    background: #0056b3;
+}
+
+#personal-details {
+    background: white;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#personal-details h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+#personal-details form {
+    display: flex;
+    flex-direction: column;
+}
+
+#personal-details label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+#personal-details input,
+#personal-details textarea {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#personal-details button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    border-radius: 5px;
+}
+
+#personal-details button:hover {
+    background: #0056b3;
+}
+
+#delivery-options {
+    background: white;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#delivery-options h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+#delivery-options form {
+    display: flex;
+    flex-direction: column;
+}
+
+#delivery-options div {
+    margin-bottom: 1rem;
+}
+
+#delivery-options label {
+    margin-left: 0.5rem;
+}
+
+#delivery-options button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    border-radius: 5px;
+}
+
+#delivery-options button:hover {
+    background: #0056b3;
+}
+</style>
