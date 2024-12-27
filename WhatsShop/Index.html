@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsShop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header style="background: #2c3e50; color: #ecf0f1; font-family: 'Roboto', sans-serif;">
+        <div class="container">
+            <div class="logo">
+                <img src="path/to/logo.png" alt="WhatsShop Logo" class="logo-img">
+                <h1 style="font-weight: 700; margin: 0;">WhatsShop</h1>
+            </div>
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="#products" style="color: #ecf0f1;"><i class="fas fa-box-open"></i> Products</a></li>
+                         <li><a href="/Accessories.html"><i class="fas fa-shopping-cart"></i> Accessories</a></li>
+                    <li><a href="/Login.html" style="color: #ecf0f1;"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                    <li><a href="#personal-details" style="color: #ecf0f1;"><i class="fas fa-user"></i> Personal Details</a></li>
+                    <li><a href="#" style="color: #ecf0f1;"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="#" style="color: #ecf0f1;"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li><a href="#" style="color: #ecf0f1;"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                    <li><a href="#delivery-options" style="color: #ecf0f1;"><i class="fas fa-truck"></i> Delivery Options</a></li>
+                    <li><a href="#cart" style="color: #ecf0f1;"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                    <li><a href="order-history.html"><i class="fas fa-history"></i> View Order History</a></li>
+                    <li><a href="/Login.html" style="color: #ecf0f1;"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <button class="openbtn" onclick="openNav()">☰ Menu</button>
+    <div id="mySidepanel" class="sidepanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <ul>
+            <li><a href="#products"><i class="fas fa-box-open"></i> Products</a></li>
+            <li><a href="#cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+            <li><a href="#personal-details"><i class="fas fa-user"></i> Personal Details</a></li>
+            <li><a href="#delivery-options"><i class="fas fa-truck"></i> Delivery Options</a></li>
+            <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+            <li><a href="order-history.html"><i class="fas fa-history"></i> View Order History</a></li>
+        </ul>
+    </div>
+    <section>
+
+    <section id="personal-details" class="container">
+        <h2 onclick="toggleDetails()">Personal Details <i class="fas fa-chevron-down"></i></h2> 
+        <p><i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i> Fill in Personal Information before you can order</p>
+        <div id="personal-details-form-container" style="display: none;"></div>
+            <form id="personal-details-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" required></textarea>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </section>
+
+
+    
+    <section id="search-filter" class="container">
+        <h2>Search and Filter Products</h2>
+        <div class="search-filter-wrapper">
+            <div class="search-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search for products...">
+            </div>
+            <div class="filter-select-wrapper"></div>
+                <i class="fas fa-filter"></i>
+                <select id="filter-select">
+                    <option value="all">All</option>
+                    <option value="iphone-x">iPhone X</option>
+                    <option value="iphone-12">iPhone 12</option>
+                    <option value="iphone-13">iPhone 13</option>
+                    <option value="iphone-14">iPhone 14</option>
+                </select>
+            </div>
+        </div>
+        <section id="products" class="container">
+            <h2>Our Products</h2>
+            <div class="product-list">
+                <div class="product" data-category="iphone-x">
+                    <img src="/images/netball.jpg" alt="iPhone X">
+                    <h3>iPhone X</h3>
+                    <p>Price: R6999,99</p>
+                    <button class="add-to-cart" data-name="iPhone X" data-price="6999.99">Add to Cart</button>
+                </div>
+                <div class="product" data-category="iphone-12">
+                    <img src="./images/istockphoto-187164792-612x612.jpg" alt="iPhone 12">
+                    <h3>iPhone 12</h3>
+                    <p>Price: R9999,99</p>
+                    <button class="add-to-cart" data-name="iPhone 12" data-price="9999.99">Add to Cart</button>
+                </div>
+                <div class="product" data-category="iphone-13">
+                    <img src="./images/istockphoto-1768725228-612x612.jpg" alt="iPhone 13">
+                    <h3>iPhone 13</h3>
+                    <p>Price: R15999,99</p>
+                    <button class="add-to-cart" data-name="iPhone 13" data-price="15999.99">Add to Cart</button>
+                </div>
+                <div class="product" data-category="iphone-14">
+                    <img src="./images/istockphoto-1196245842-612x612.jpg" alt="iPhone 14">
+                    <h3>iPhone 14</h3>
+                    <p>Price: R18999,99</p>
+                    <button class="add-to-cart" data-name="iPhone 14" data-price="18999.99">Add to Cart</button>
+                </div>
+            <div class="product" data-category="iphone-11">
+                <img src="./images/iphone-11.jpg" alt="iPhone 11">
+                <h3>iPhone 11</h3>
+                <p>Price: R7999,99</p>
+                <button class="add-to-cart" data-name="iPhone 11" data-price="7999.99">Add to Cart</button>
+            </div>
+            <div class="product" data-category="iphone-se">
+                <img src="./images/iphone-se.jpg" alt="iPhone SE">
+                <h3>iPhone SE</h3>
+                <p>Price: R4999,99</p>
+                <button class="add-to-cart" data-name="iPhone SE" data-price="4999.99">Add to Cart</button>
+            </div>
+            <div class="product" data-category="iphone-8">
+                <img src="./images/iphone-8.jpg" alt="iPhone 8">
+                <h3>iPhone 8</h3>
+                <p>Price: R3999,99</p>
+                <button class="add-to-cart" data-name="iPhone 8" data-price="3999.99">Add to Cart</button>
+            </div>
+            <div class="product" data-category="iphone-7">
+                <img src="./images/iphone-7.jpg" alt="iPhone 7">
+                <h3>iPhone 7</h3>
+                <p>Price: R2999,99</p>
+                <button class="add-to-cart" data-name="iPhone 7" data-price="2999.99">Add to Cart</button>
+            </div>
+            <div class="product" data-category="iphone-6s">
+                <img src="./images/iphone-6s.jpg" alt="iPhone 6s">
+                <h3>iPhone 6s</h3>
+                <p>Price: R1999,99</p>
+                <button class="add-to-cart" data-name="iPhone 6s" data-price="1999.99">Add to Cart</button>
+            </div>
+            <div class="product" data-category="iphone-6">
+                <img src="./images/iphone-6.jpg" alt="iPhone 6">
+                <h3>iPhone 6</h3>
+                <p>Price: R1499,99</p>
+                <button class="add-to-cart" data-name="iPhone 6" data-price="1499.99">Add to Cart</button>
+            </div>
+            <div class="product" data-category="iphone-5s">
+                <img src="./images/iphone-5s.jpg" alt="iPhone 5s">
+                <h3>iPhone 5s</h3>
+                <p>Price: R999,99</p>
+                <button class="add-to-cart" data-name="iPhone 5s" data-price="999.99">Add to Cart</button>
+            </div>
+            <div class="product" data-category="iphone-5">
+                <img src="./images/iphone-5.jpg" alt="iPhone 5">
+                <h3>iPhone 5</h3>
+                <p>Price: R799,99</p>
+                <button class="add-to-cart" data-name="iPhone 5" data-price="799.99">Add to Cart</button>
+            </div>
+            <div class="product" data-category="iphone-4s">
+                <img src="./images/iphone-4s.jpg" alt="iPhone 4s">
+                <h3>iPhone 4s</h3>
+                <p>Price: R499,99</p>
+                <button class="add-to-cart" data-name="iPhone 4s" data-price="499.99">Add to Cart</button>
+            </div>
+            <div class="product" data-category="iphone-4">
+                <img src="./images/iphone-4.jpg" alt="iPhone 4">
+                <h3>iPhone 4</h3>
+                <p>Price: R299,99</p>
+                <button class="add-to-cart" data-name="iPhone 4" data-price="299.99">Add to Cart</button>
+            </div>
+            </div>
+        </section>
+                <!-- Add this div after your search-filter section -->
+        <div id="products" class="products-grid"></div>
+    </section>
+   
+    
+
+    <main>
+       
+        <!-- Product Modal -->
+        <div id="product-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modal-product-name"></h2>
+                <img id="modal-product-image" src="" alt="Product Image" style="max-width: 100%; height: auto;">
+                <p id="modal-product-price"></p>
+                <p id="modal-product-description"></p>
+                <button id="modal-add-to-cart" class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+
+     
+        <!-- Personal Details Form -->
+       
+
+        <!-- Delivery Options -->
+        <section id="delivery-options" class="container">
+            <h2>Delivery Options</h2>
+            <form id="delivery-options-form">
+                <div>
+                    <input type="radio" id="standard" name="delivery" value="Standard" data-price="50" required>
+                    <label for="standard">Standard Delivery - R50 (3-5 business days)</label>
+                </div>
+                <div>
+                    <input type="radio" id="express" name="delivery" value="Express" data-price="100">
+                    <label for="express">Express Delivery - R100 (1-2 business days)</label>
+                </div>
+                <div>
+                    <input type="radio" id="overnight" name="delivery" value="Overnight" data-price="150">
+                    <label for="overnight">Overnight Delivery - R150 (Next day delivery)</label>
+                </div>
+                <button type="submit">Save Delivery Option</button>
+            </form>
+        </section>
+
+        <section id="cart" class="container">
+            <h2>Your Cart <i class="fas fa-shopping-cart"></i></h2>
+            <div class="cart-items"></div>
+            <p class="delivery">Delivery: None</p>
+            <p class="total">Total: R0</p>
+            <button id="checkout" class="checkout-btn">
+                <i class="fas fa-whatsapp"></i> Checkout on WhatsApp
+            </button>
+           
+
+           
+        </section>
+
+        
+        </main>
+
+      
+    <!-- Order History Modal -->
+  
+  
+  
+    <section id="history" class="container">
+        <h2>History</h2>
+        <div id="history-content"></div>
+    </section>
+   
+</body>
+
+<script>
+    function saveCompleteOrder() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const personalDetails = JSON.parse(localStorage.getItem('personalDetails')) || {};
+    const deliveryOption = JSON.parse(localStorage.getItem('deliveryOption')) || {};
+    
+    const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+    
+    const newOrder = {
+        id: Date.now(),
+        date: new Date().toLocaleDateString(),
+        items: cart,
+        customerInfo: personalDetails,
+        delivery: deliveryOption,
+        totalAmount: cart.reduce((sum, item) => sum + item.price, 0),
+        status: 'Pending'
+    };
+    
+    orderHistory.push(newOrder);
+    localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+    displayOrderHistory();
+}
+
+function displayOrderHistory() {
+    const orderHistoryBody = document.getElementById('orderHistoryBody');
+    const orders = JSON.parse(localStorage.getItem('orderHistory')) || [];
+    
+    orderHistoryBody.innerHTML = orders.map(order => `
+                <tr>
+                    <td>${order.date}</td>
+                    <td>#${order.id}</td>
+                    <td>
+                        ${order.items.map(item => `
+                            <div>${item.name} x${item.quantity}</div>
+                        `).join('')}
+                    </td>
+                    <td>R${order.totalAmount.toFixed(2)}</td>
+                    <td>
+                        <div>Name: ${order.customerInfo.name}</div>
+                        <div>Email: ${order.customerInfo.email}</div>
+                    </td>
+                    <td>${order.delivery.method}</td>
+                    <td><span class="status-badge">${order.status}</span></td>
+                    <td>
+                        <button onclick="viewOrderDetails('${order.id}')" class="btn-view">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button onclick="downloadInvoice('${order.id}')" class="btn-download">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+}
+document.getElementById('proceed-btn').addEventListener('click', saveCompleteOrder);
+
+function saveCompleteOrder() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const personalDetails = JSON.parse(localStorage.getItem('personalDetails')) || {};
+    const deliveryOption = JSON.parse(localStorage.getItem('deliveryOption')) || {};
+    
+    const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+    
+    const newOrder = {
+        id: Date.now(),
+        date: new Date().toLocaleDateString(),
+        items: cart,
+        customerInfo: personalDetails,
+        delivery: deliveryOption,
+        totalAmount: cart.reduce((sum, item) => sum + item.price, 0),
+        status: 'Pending'
+    };
+    
+    orderHistory.push(newOrder);
+    localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+    displayOrderHistory();
+}
+
+function displayOrderHistory() {
+    const orderHistoryBody = document.getElementById('orderHistoryBody');
+    const orders = JSON.parse(localStorage.getItem('orderHistory')) || [];
+    
+    orderHistoryBody.innerHTML = orders.map(order => `
+        <tr>
+            <td>${order.date}</td>
+            <td>#${order.id}</td>
+            <td>
+                ${order.items.map(item => `
+                    <div>${item.name} x${item.quantity}</div>
+                `).join('')}
+            </td>
+            <td>R${order.totalAmount.toFixed(2)}</td>
+            <td>
+                <div>Name: ${order.customerInfo.name}</div>
+                <div>Email: ${order.customerInfo.email}</div>
+            </td>
+            <td>${order.delivery.method}</td>
+            <td><span class="status-badge">${order.status}</span></td>
+            <td>
+                <button onclick="viewOrderDetails('${order.id}')" class="btn-view">
+                    <i class="fas fa-eye"></i>
+                </button>
+                <button onclick="downloadInvoice('${order.id}')" class="btn-download">
+                    <i class="fas fa-download"></i>
+                </button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+  
+  
+ 
+function openNav() {
+    document.getElementById("mySidepanel").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidepanel").style.width = "0";
+}
+
+document.querySelector('.hamburger-menu').addEventListener('click', () => {
+    document.querySelector('nav ul').classList.toggle('show');
+});
+      
+    const searchInput = document.getElementById('search-input');
+const filterSelect = document.getElementById('filter-select');
+const productsContainer = document.getElementById('products-container');
+
+// Sample products array - replace with your actual products
+const products = [
+    { id: 1, name: 'iPhone X', category: 'iphone-x', price: 599 },
+    { id: 2, name: 'iPhone 12', category: 'iphone-12', price: 799 },
+    { id: 3, name: 'iPhone 13', category: 'iphone-13', price: 899 },
+    { id: 4, name: 'iPhone 14', category: 'iphone-14', price: 999 }
+];
+
+function filterProducts() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const selectedCategory = filterSelect.value;
+
+    const filteredProducts = products.filter(product => {
+        const matchesSearch = product.name.toLowerCase().includes(searchTerm);
+        const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
+        return matchesSearch && matchesCategory;
+    });
+
+    displayProducts(filteredProducts);
+}
+
+function displayProducts(products) {
+    productsContainer.innerHTML = products.map(product => `
+        <div class="product-card">
+            <h3>${product.name}</h3>
+            <p>$${product.price}</p>
+            <button onclick="addToCart(${product.id})">Add to Cart</button>
+        </div>
+    `).join('');
+}
+
+// Add event listeners
+searchInput.addEventListener('input', filterProducts);
+filterSelect.addEventListener('change', filterProducts);
+
+// Initial display
+displayProducts(products);
+
+    const productElements = document.querySelectorAll('.product');
+
+    document.getElementById('search-input').addEventListener('input', filterProducts);
+    document.getElementById('filter-select').addEventListener('change', filterProducts);
+
+    function filterProducts() {
+        const searchTerm = document.getElementById('search-input').value.toLowerCase();
+        const filterTerm = document.getElementById('filter-select').value;
+
+        productElements.forEach(product => {
+            const productName = product.querySelector('h3').textContent.toLowerCase();
+            const matchesSearch = productName.includes(searchTerm);
+            const matchesFilter = filterTerm === 'all' || productName.includes(filterTerm);
+
+            if (matchesSearch && matchesFilter) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+
+    function toggleDetails() {
+        const formContainer = document.getElementById('personal-details-form-container');
+        const icon = document.querySelector('#personal-details h2 i');
+        if (formContainer.style.display === 'none') {
+            formContainer.style.display = 'block';
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+        } else {
+            formContainer.style.display = 'none';
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+        }
+    
+
+document.querySelectorAll('.product').forEach(product => {
+    product.addEventListener('click', () => {
+        const name = product.querySelector('h3').textContent;
+        const price = product.querySelector('p').textContent;
+        const imageSrc = product.querySelector('img').src;
+        const description = "This is a detailed description of " + name;
+
+        document.getElementById('modal-product-name').textContent = name;
+        document.getElementById('modal-product-price').textContent = price;
+        document.getElementById('modal-product-image').src = imageSrc;
+        document.getElementById('modal-product-description').textContent = description;
+
+        const modal = document.getElementById('product-modal');
+        modal.style.display = "block";
+
+        document.getElementById('modal-add-to-cart').onclick = () => {
+            const priceValue = parseFloat(product.querySelector('button').dataset.price);
+            cart.push({ name, price: priceValue });
+            updateCart();
+            modal.style.display = "none";
+            alert(`${name} added to your cart!`);
+        };
+    });
+});
+
+document.querySelector('.close').onclick = () => {
+    document.getElementById('product-modal').style.display = "none";
+};
+
+window.onclick = (event) => {
+    const modal = document.getElementById('product-modal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+
+document.getElementById('view-history').addEventListener('click', () => {
+    const modal = document.getElementById('order-history-modal');
+    loadOrderHistory();
+    modal.style.display = 'block';
+});
+
+document.querySelector('.close').addEventListener('click', () => {
+    const modal = document.getElementById('order-history-modal');
+    modal.style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('order-history-modal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+});
+
+  // Cart functionality
+  let cart = [];
+  const cartItemsContainer = document.querySelector('.cart-items');
+  const deliveryDisplay = document.querySelector('.delivery');
+  const totalDisplay = document.querySelector('.total');
+  let personalDetails = {};
+  let deliveryOption = {};
+
+  // Add to Cart
+  document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+          const product = button.closest('.product');
+          const name = button.dataset.name;
+          const price = parseFloat(button.dataset.price);
+          const image = product.querySelector('img').src;
+          const description = product.querySelector('h3').textContent;
+
+          // Add item to cart
+          cart.push({ name, price, image, description });
+          updateCart();
+          alert(`${name} added to your cart!`);
+      });
+  });
+
+  // Update Cart
+  function updateCart() {
+      cartItemsContainer.innerHTML = ''; // Clear cart display
+      let total = 0;
+
+      // Generate cart items
+      cart.forEach((item, index) => {
+          const itemElement = document.createElement('div');
+          itemElement.classList.add('cart-item');
+          itemElement.innerHTML = `
+              <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
+              <span>${item.name} - R${item.price.toFixed(2)}</span>
+              <button class="remove-item"><i class="fas fa-trash-alt"></i> Remove</button>
+          `;
+          itemElement.querySelector('.remove-item').addEventListener('click', () => {
+              cart.splice(index, 1); // Remove item from cart
+              updateCart();
+          });
+          cartItemsContainer.appendChild(itemElement);
+          total += item.price;
+      });
+
+      // Update total
+      const deliveryCost = deliveryOption.price || 0;
+      deliveryDisplay.textContent = `Delivery: ${deliveryOption.description || 'None'}`;
+      totalDisplay.textContent = `Total: R${(total + deliveryCost).toFixed(2)}`;
+  }
+
+  // Save Personal Details
+  document.getElementById('personal-details-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      personalDetails = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          address: document.getElementById('address').value
+      };
+      alert('Personal details saved!');
+  });
+
+  // Save Delivery Option
+  document.getElementById('delivery-options-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const selectedOption = document.querySelector('input[name="delivery"]:checked');
+      deliveryOption = {
+          type: selectedOption.value,
+          price: parseFloat(selectedOption.dataset.price),
+          description: selectedOption.nextElementSibling.textContent
+      };
+      alert('Delivery option saved!');
+      updateCart();
+  });
+
+  // Generate PDF
+  function generatePDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      // Add title
+      doc.setFontSize(18);
+      doc.text('Order Details', 105, 10, null, null, 'center');
+
+      // Add personal details
+      doc.setFontSize(12);
+      doc.text(`Name: ${personalDetails.name}`, 10, 30);
+      doc.text(`Email: ${personalDetails.email}`, 10, 40);
+      doc.text(`Phone: ${personalDetails.phone}`, 10, 50);
+      doc.text(`Address: ${personalDetails.address}`, 10, 60);
+
+      // Add a line separator
+      doc.setLineWidth(0.5);
+      doc.line(10, 70, 200, 70);
+
+      // Add cart items
+      let yPosition = 80;
+      cart.forEach(item => {
+      doc.setFontSize(14);
+      doc.text(`Product: ${item.name}`, 10, yPosition);
+      doc.setFontSize(12);
+      doc.text(`Price: R${item.price.toFixed(2)}`, 10, yPosition + 10);
+      doc.text(`Description: ${item.description}`, 10, yPosition + 20);
+      doc.addImage(item.image, 'JPEG', 150, yPosition, 40, 40);
+      yPosition += 50;
+      doc.setLineWidth(0.2);
+      doc.line(10, yPosition, 200, yPosition);
+      yPosition += 10;
+      });
+
+      // Add delivery and total
+      const total = cart.reduce((sum, item) => sum + item.price, 0) + deliveryOption.price;
+      doc.setFontSize(14);
+      doc.text(`Delivery: ${deliveryOption.description}`, 10, yPosition);
+      doc.text(`Total: R${total.toFixed(2)}`, 10, yPosition + 10);
+
+      // Add footer
+      doc.setFontSize(10);
+      doc.text('Thank you for shopping with us!', 105, 290, null, null, 'center');
+
+      return doc;
+  }
+  
+
+  // WhatsApp Checkout
+  document.getElementById('checkout').addEventListener('click', () => {
+      if (cart.length === 0) {
+          alert('Your cart is empty!');
+          return;
+      }
+
+      if (!personalDetails.name || !personalDetails.email || !personalDetails.phone || !personalDetails.address) {
+          alert('Please fill in your personal details.');
+          return;
+      }
+
+      if (!deliveryOption.type) {
+          alert('Please select a delivery option.');
+          return;
+      }
+
+      const pdfDoc = generatePDF();
+      const pdfBlob = pdfDoc.output('blob');
+
+      const formData = new FormData();
+      formData.append('file', pdfBlob, 'order-details.pdf');
+
+      fetch('https://file.io', {
+          method: 'POST',
+          body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+          const fileUrl = data.link;
+          const whatsappMessage = `Hello! I would like to order. Please find the details in the attached PDF: ${fileUrl}`;
+          const whatsappURL = `https://wa.me/0656300402?text=${encodeURIComponent(whatsappMessage)}`;
+          window.open(whatsappURL, '_blank');
+
+          // Save order to history
+          cart.forEach(item => {
+              saveOrderToHistory({
+                  name: item.name,
+                  price: item.price,
+                  image: item.image,
+                  date: new Date().toLocaleDateString()
+              });
+          });
+
+          // Clear cart after checkout
+          cart = [];
+          updateCart();
+      })
+      .catch(error => {
+          console.error('Error uploading file:', error);
+          alert('Failed to upload the PDF. Please try again.');
+      });
+  });
+
+  // Generate PDF Link
+  document.getElementById('generate-pdf').addEventListener('click', () => {
+      const pdfDoc = generatePDF();
+      pdfDoc.save('order-details.pdf');
+  });
+
+  // Order History functionality
+  function saveOrderToHistory(order) {
+      let orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+      orderHistory.push(order);
+      localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+  }
+
+  function loadOrderHistory() {
+      const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+      const orderHistoryList = document.querySelector('.order-history-list');
+      orderHistoryList.innerHTML = ''; // Clear order history display
+
+      orderHistory.forEach(order => {
+          const orderElement = document.createElement('div');
+          orderElement.classList.add('order-history-item');
+          orderElement.innerHTML = `
+              <img src="${order.image}" alt="${order.name}">
+              <span>${order.name} - R${order.price.toFixed(2)}</span>
+              <span>${order.date}</span>
+          `;
+          orderHistoryList.appendChild(orderElement);
+      });
+  }
+
+  // Call loadOrderHistory on page load
+  document.addEventListener('DOMContentLoaded', loadOrderHistory);
+
+  // Modal functionality
+  const modal = document.getElementById('order-history-modal');
+  const btn = document.getElementById('view-history-btn');
+  const span = document.getElementsByClassName('close')[0];
+
+  btn.onclick = function() {
+      loadOrderHistory();
+      modal.style.display = 'block';
+  }
+
+  span.onclick = function() {
+      modal.style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = 'none';
+      }
+  }
+
+  function showHistory() {
+    const historyContent = document.getElementById('history-content');
+    historyContent.innerHTML = '';
+
+    // Retrieve data from localStorage
+    const personalDetails = JSON.parse(localStorage.getItem('personalDetails')) || {};
+    const deliveryOption = JSON.parse(localStorage.getItem('deliveryOption')) || {};
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Personal Information
+    const personalInfo = `
+        <h3>Personal Information</h3>
+        <p>Name: ${personalDetails.name || 'N/A'}</p>
+        <p>Email: ${personalDetails.email || 'N/A'}</p>
+        <p>Phone: ${personalDetails.phone || 'N/A'}</p>
+        <p>Address: ${personalDetails.address || 'N/A'}</p>
+    `;
+    historyContent.innerHTML += personalInfo;
+
+    // Delivery Option
+    const deliveryInfo = `
+        <h3>Delivery Option</h3>
+        <p>Type: ${deliveryOption.type || 'N/A'}</p>
+        <p>Price: R${deliveryOption.price ? deliveryOption.price.toFixed(2) : 'N/A'}</p>
+        <p>Description: ${deliveryOption.description || 'N/A'}</p>
+    `;
+    historyContent.innerHTML += deliveryInfo;
+
+    // Cart Items
+    const cartItems = `
+        <h3>Cart Items</h3>
+        <ul>
+            ${cart.map(item => `
+                <li>
+                    <span>${item.name}</span>
+                    <span>R${item.price.toFixed(2)}</span>
+                    <span>Quantity: ${item.quantity}</span>
+                </li>
+            `).join('')}
+        </ul>
+    `;
+    historyContent.innerHTML += cartItems;
+}
+
+// Call showHistory function when needed, e.g., on page load or button click
+document.addEventListener('DOMContentLoaded', showHistory);
+document.getElementById('view-history-btn').addEventListener('click', showHistory);}
+
+</script>
+</html>
+
