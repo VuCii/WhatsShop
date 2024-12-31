@@ -19,7 +19,19 @@
             </div>
             <nav class="desktop-menu">
                 <ul>
-                    <li><a href="#products" style="color: #ecf0f1;"><i class="fas fa-box-open"></i> Products</a></li>
+                    <li class="dropdown">
+                        <a href="#products">
+                          <i class="fas fa-box-open"></i> Products
+                          <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="./Index.html">Smartphones</a></li>
+                          <li><a href="./Accessories.html">Accessories</a></li>
+                          <li><a href="./audioentert.html">Audio Ent</a></li>
+                          <li><a href="./Smartwatches&wearables.html">Smartwatches</a></li>
+                          <li><a href="./gaming.html">Gaming</a></li>
+                        </ul>
+                      </li>
                     <li><a href="#personal-details" style="color: #ecf0f1;"><i class="fas fa-user"></i> Personal Details</a></li>
                     <li><a href="/Accessories.html" style="color: #ecf0f1;"><i class="fas fa-shopping-cart"></i> Accessories</a></li>
                     <li><a href="/audioentert.html" style="color: #ecf0f1;"><i class="fas fa-info-circle"></i> About Us</a></li>
@@ -36,10 +48,24 @@
     <div id="mySidepanel" class="sidepanel">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <ul>
-            <li><a href="#products"><i class="fas fa-box-open"></i> Products</a></li>
-            <li><a href="/Accessories.html"><i class="fas fa-shopping-cart"></i> Accessories</a></li>
+            <li class="dropdown">
+                <a href="#products">
+                  <i class="fas fa-box-open"></i> Products
+                  <i class="fas fa-chevron-down dropdown-icon"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="./Index.html">Smartphones</a></li>
+                  <li><a href="./Accessories.html">Accessories/a></li>
+                  <li><a href="./audioentert.html">Audio Ent</a></li>
+                  <li><a href="./Smartwatches&wearables.html">Smartwatches</a></li>
+                  <li><a href="./gaming.html">Gaming</a></li>
+                </ul>
+              </li>
+     
+            <li><a href="/AudioEntertainment.html"><i class="fas fa-headphones"></i> Audio & Entertainment</a></li> 
+            <li><a href="/Gaming.html"><i class="fas fa-gamepad"></i> Gaming</a></li>
             <li><a href="#cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-            <li><a href="#personal-details"><i class="fas fa-user"></i> Personal Details</a></li>
+            <li><a href="#personal-details"><i class="fas fa-user"></i> Profile</a></li>
             <li><a href="#delivery-options"><i class="fas fa-truck"></i> Delivery Options</a></li>
             <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
             <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
@@ -64,6 +90,7 @@
             </form>
         </div>
     </section>
+    
 
    <style>
     /* Main navigation - hide on mobile */
@@ -167,6 +194,7 @@ nav ul {
   
 
     <script>
+        
         document.querySelector('.hamburger-menu').addEventListener('click', () => {
             document.querySelector('nav ul').classList.toggle('show');
         });
@@ -250,6 +278,7 @@ nav ul {
         { id: 4, name: 'iPhone 14', category: 'iphone-14', price: 999 }
     ];
     
+    
     function filterProducts() {
         const searchTerm = searchInput.value.toLowerCase();
         const selectedCategory = filterSelect.value;
@@ -279,6 +308,21 @@ nav ul {
     
     // Initial display
     displayProducts(products);
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+  const menu = dropdown.querySelector('.dropdown-menu');
+  dropdown.addEventListener('click', () => {
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Close dropdown if clicking outside
+  document.addEventListener('click', (event) => {
+    if (!dropdown.contains(event.target)) {
+      menu.style.display = 'none';
+    }
+  });
+});
+
+    
 </script>
     <style>
     .search-input-wrapper, .filter-select-wrapper {
