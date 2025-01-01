@@ -12,18 +12,19 @@
 </head>
 <body>
     <header style="background: #2c3e50; color: #ecf0f1; font-family: 'Roboto', sans-serif;">
-        <div class="container">
+       
             <div class="logo">
-                <img src="path/to/logo.png" alt="WhatsShop Logo" class="logo-img">
+                <img src="./images/logoa.webp" alt="WhatsShop Logo" class="logo-img">
                 <h1 style="font-weight: 700; margin: 0;">WhatsShop</h1>
+                <h2 onclick="toggleDetails()">Profile<i class="fas fa-chevron-down"></i></h2> 
              
             </div>
             <nav class="desktop-menu">
                 <ul>
+                    
                     <li class="dropdown">
                         <a href="#">
-                          <i class="fas fa-box-open"></i> Products
-                          <i class="fas fa-chevron-down dropdown-icon"></i>
+      
                         </a>
                         <ul class="dropdown-menu">
                           <li><a href="./Index.html">Smartphones</a></li>
@@ -33,39 +34,43 @@
                           <li><a href="./gaming.html">Gaming</a></li>
                         </ul>
                       </li>
-                    <li><a href="#personal-details" style="color: #ecf0f1;"><i class="fas fa-user"></i> Personal Details</a></li>
+           
                     <li><a href="#" style="color: #ecf0f1;"><i class="fas fa-info-circle"></i> About Us</a></li>
                     <li><a href="#" style="color: #ecf0f1;"><i class="fas fa-envelope"></i> Contact</a></li>
-                    <li><a href="#" style="color: #ecf0f1;"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                       
+                   
                     <li><a href="#delivery-options" style="color: #ecf0f1;"><i class="fas fa-truck"></i> Delivery Options</a></li>
                     <li><a href="#cart" style="color: #ecf0f1;"><i class="fas fa-shopping-cart"></i> Cart</a></li>
                 </ul>
               
             </nav>
-            <button class="openbtn" onclick="openNav()">☰ Menu</button>
+          
          
-        </div>
-        <h2 onclick="toggleDetails()">Profile<i class="fas fa-chevron-down"></i></h2> 
+       
+     
+        
     </header>
    
+    
     <div id="mySidepanel" class="sidepanel">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <ul>
             <li class="dropdown">
+                <h2 onclick="toggleDetails()">Profile<i class="fas fa-chevron-down"></i></h2> 
                 <a href="#products">
-                  <i class="fas fa-box-open"></i> Products
-                  <i class="fas fa-chevron-down dropdown-icon"></i>
+                    <i class="fas fa-box-open"></i> Products
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                    <ul class="dropdown-menu">
+                        <li><a href="./Index.html">Smartphones</a></li>
+                        <li><a href="./Accessories.html">Accessories</a></li>
+                        <li><a href="./audioentert.html">Audio Ent</a></li>
+                        <li><a href="./Smartwatches&wearables.html">Smartwatches</a></li>
+                        <li><a href="./gaming.html">Gaming</a></li>
+                    </ul>
                 </a>
-                <ul class="dropdown-menu">
-                  <li><a href="./Index.html">Smartphones</a></li>
-                  <li><a href="./Accessories.html">Accessories/a></li>
-                  <li><a href="./audioentert.html">Audio Ent</a></li>
-                  <li><a href="./Smartwatches&wearables.html">Smartwatches</a></li>
-                  <li><a href="./gaming.html">Gaming</a></li>
-                </ul>
-              </li>
-     
-            <li><a href="./audioentert.html"><i class="fas fa-headphones"></i> Audio & Entertainment</a></li> 
+            
+            </li>
+            <li><a href="./audioentert.html"><i class="fas fa-headphones"></i> Audio & Entertainment</a></li>
             <li><a href="/Gaming.html"><i class="fas fa-gamepad"></i> Gaming</a></li>
             <li><a href="#cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
             <li><a href="#personal-details"><i class="fas fa-user"></i> Profile</a></li>
@@ -76,7 +81,7 @@
         </ul>
     </div>
     <section id="personal-details" class="container">
-       
+        <h2 onclick="toggleDetails()">Profile<i class="fas fa-chevron-down"></i></h2> 
         <p><i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i> Fill in Personal Information before you can order</p>
         <div id="personal-details-form-container" style="display: none;">
             <form id="personal-details-form">
@@ -202,6 +207,9 @@ nav ul {
         });
     </script>
 
+<section>
+    <button class="openbtn" onclick="openNav()">☰</button>
+</section>
     
     <section id="search-filter" class="container">
         <h2>Search and Filter Products</h2>
@@ -225,40 +233,40 @@ nav ul {
             <h2>Our Products</h2>
             <div class="product-list">
                 <div class="product" data-category="case">
-                    <img src="./images/istockphoto-1768725228-612x612.jpg" alt="iPhone Case">
+                    <img src="images/images (6).jpg" alt="iPhone Case">
                     <h3>iPhone Case</h3>
                     <p>Price: R199,99</p>
-                    <button class="add-to-cart" data-name="iPhone Case" data-price="199.99">Add to Cart</button>
+                    <button class="add-to-cart" data-name="iPhone Case" data-price="199.99" data-image="images/images (6).jpg">Add to Cart</button>
                 </div>
                 <div class="product" data-category="charger">
-                    <img src="./images/istockphoto-1768725228-612x612.jpg" alt="iPhone Charger">
+                    <img src="./images/images (7).jpg" alt="iPhone Charger">
                     <h3>iPhone Charger</h3>
                     <p>Price: R299,99</p>
-                    <button class="add-to-cart" data-name="iPhone Charger" data-price="299.99">Add to Cart</button>
+                    <button class="add-to-cart" data-name="iPhone Charger" data-price="299.99" data-image="./images/images (7).jpg">Add to Cart</button>
                 </div>
                 <div class="product" data-category="earpods">
-                    <img src="./images/istockphoto-187164792-612x612.jpg" alt="iPhone EarPods">
+                    <img src="./images/AirPods.webp" alt="iPhone EarPods">
                     <h3>iPhone EarPods</h3>
                     <p>Price: R399,99</p>
-                    <button class="add-to-cart" data-name="iPhone EarPods" data-price="399.99">Add to Cart</button>
+                    <button class="add-to-cart" data-name="iPhone EarPods" data-price="399.99" data-image="./images/AirPods.webp">Add to Cart</button>
                 </div>
                 <div class="product" data-category="screen-protector">
-                    <img src="./images/iphone-screen-protector.jpg" alt="iPhone Screen Protector">
+                    <img src="./images/images.jpg" alt="iPhone Screen Protector">
                     <h3>iPhone Screen Protector</h3>
                     <p>Price: R99,99</p>
-                    <button class="add-to-cart" data-name="iPhone Screen Protector" data-price="99.99">Add to Cart</button>
+                    <button class="add-to-cart" data-name="iPhone Screen Protector" data-price="99.99" data-image="./images/images.jpg">Add to Cart</button>
                 </div>
                 <div class="product" data-category="wireless-charger">
-                    <img src="./images/iphone-wireless-charger.jpg" alt="iPhone Wireless Charger">
+                    <img src="./images/images (1).jpg" alt="iPhone Wireless Charger">
                     <h3>iPhone Wireless Charger</h3>
                     <p>Price: R499,99</p>
-                    <button class="add-to-cart" data-name="iPhone Wireless Charger" data-price="499.99">Add to Cart</button>
+                    <button class="add-to-cart" data-name="iPhone Wireless Charger" data-price="499.99" data-image="./images/images (1).jpg">Add to Cart</button>
                 </div>
                 <div class="product" data-category="power-bank">
-                    <img src="./images/netball.jpg" alt="iPhone Power Bank">
+                    <img src="./images/images (5).jpg" alt="iPhone Power Bank">
                     <h3>iPhone Power Bank</h3>
                     <p>Price: R599,99</p>
-                    <button class="add-to-cart" data-name="iPhone Power Bank" data-price="599.99">Add to Cart</button>
+                    <button class="add-to-cart" data-name="iPhone Power Bank" data-price="599.99" data-image="./images/images (5).jpg">Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -294,6 +302,32 @@ nav ul {
         displayProducts(filteredProducts);
     }
     
+        function updateCart() {
+            cartItemsContainer.innerHTML = ''; // Clear cart display
+            let total = 0;
+
+            // Generate cart items
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
+                    <span>${item.name} - R${item.price.toFixed(2)}</span>
+                    <button class="remove-item"><i class="fas fa-trash-alt"></i> Remove</button>
+                `;
+                itemElement.querySelector('.remove-item').addEventListener('click', () => {
+                    cart.splice(index, 1); // Remove item from cart
+                    updateCart();
+                });
+                cartItemsContainer.appendChild(itemElement);
+                total += item.price;
+            });
+
+            // Update total
+            const deliveryCost = deliveryOption.price || 0;
+            deliveryDisplay.textContent = `Delivery: ${deliveryOption.description || 'None'}`;
+            totalDisplay.textContent = `Total: R${(total + deliveryCost).toFixed(2)}`;
+        }
     function displayProducts(products) {
         productsContainer.innerHTML = products.map(product => `
             <div class="product-card">
@@ -570,155 +604,10 @@ nav ul {
             </button>
         </section>
 
-        <style>
-        #cart {
-            background: white;
-            margin: 1rem 0;
-            padding: 1.5rem;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        #cart h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #cart h2 i {
-            margin-left: 0.5rem;
-            color: #25D366;
-        }
-
-        .cart-items {
-            margin-bottom: 1rem;
-            max-height: 200px;
-            overflow-y: auto;
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-            padding: 1rem 0;
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .cart-item img {
-            width: 50px;
-            height: auto;
-            margin-right: 10px;
-        }
-
-        .cart-item span {
-            flex-grow: 1;
-            text-align: left;
-        }
-
-        .cart-item button {
-            background: none;
-            border: none;
-            color: #d9534f;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .cart-item button:hover {
-            color: #c9302c;
-        }
-
-        .delivery, .total {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .checkout-btn {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.3s;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .checkout-btn i {
-            margin-right: 0.5rem;
-        }
-
-        .checkout-btn:hover {
-            background: #1EBE57;
-        }
-        </style>
+      
         </main>
 
-        <style>
-        #cart {
-            background: white;
-            margin: 1rem 0;
-            padding: 1.5rem;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        #cart h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .cart-items {
-            margin-bottom: 1rem;
-            max-height: 200px;
-            overflow-y: auto;
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-            padding: 1rem 0;
-        }
-
-        .total {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .checkout-btn {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.3s;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .checkout-btn i {
-            margin-right: 0.5rem;
-        }
-
-        .checkout-btn:hover {
-            background: #1EBE57;
-        }
-        </style>
+      
 
     <footer>
         <div class="container">
@@ -912,22 +801,8 @@ body {
     color: #333;
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
 
-header {
-    background: #333;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+
 
 .logo {
     display: flex;
@@ -978,7 +853,9 @@ nav a:hover {
     background: white;
     border: 1px solid #ddd;
     margin: 1rem;
+    margin: 1rem;
     padding: 1rem;
+    width: 200px;
     text-align: center;
     width: 200px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1144,4 +1021,3 @@ footer p {
 #delivery-options button:hover {
     background: #0056b3;
 }
-</style>
